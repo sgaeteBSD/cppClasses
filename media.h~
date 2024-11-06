@@ -5,13 +5,15 @@ using namespace std;
 
 class Media {
   protected:
-    char title[80];
+    char* title;
     int year;
 
   public:
-    virtual void printDetails(); //virtual destructor
+    Media(char* title, int year);
+  
+    virtual void print();
       
-    virtual char getTitle();
+    virtual char* getTitle();
     virtual int getYear();
 
     virtual ~Media();

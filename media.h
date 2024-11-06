@@ -1,3 +1,6 @@
+#ifndef MEDIA_H
+#define MEDIA_H
+
 #include <iostream>
 #include <cstring>
 
@@ -10,10 +13,13 @@ class Media {
 
   public:
     Media(char* title, int year);
+  
     virtual void print();
       
-    virtual char* getTitle();
-    virtual int getYear();
+    char* getTitle();
+    int getYear();
 
-    ~Media();
+    virtual ~Media();
 };
+
+#endif
