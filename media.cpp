@@ -1,13 +1,21 @@
 #include "media.h"
 
-media::~media() {
-  //destructor
+using namespace std;
+
+Media::Media(char* title, int year) {
+  this->title = new char[strlen(title) + 1]; //convert to cstring
+  strcpy(this->title, title); //copy in
+  this->year = year;
 }
 
-char media::getTitle() {
-  return "";
+Media::~Media() {
+  delete[] title;
 }
 
-int media::getYear() {
-  return 0;
+char* Media::getTitle() {
+  return title;
+}
+
+int Media::getYear() {
+  return year;
 }
