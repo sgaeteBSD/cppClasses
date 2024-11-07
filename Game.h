@@ -10,6 +10,7 @@ public:
 
   virtual void print();
 
+  char* getPublisher();
   int getRating();
 }
   
