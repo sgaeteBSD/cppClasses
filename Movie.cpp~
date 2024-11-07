@@ -13,7 +13,7 @@ Movie::~Movie() {
   delete[] director;
 }
 
-virtual void Movie::print() {
+void Movie::print() {
   cout << "Movie:" << title << ", Year: " << year << ", Director: " << director << ", Duration: " <<
     duration << " minutes, Rating: " << rating << endl;
 }

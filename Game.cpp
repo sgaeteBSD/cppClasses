@@ -12,7 +12,7 @@ Game::~Game() {
   delete[] publisher;
 }
 
-void Game::print() {
+virtual void Game::print() {
   cout << "Video Game:" << title << ", Year: " << year << ", Publisher: " << publisher << ", Rating: " << rating << endl;
 }
 

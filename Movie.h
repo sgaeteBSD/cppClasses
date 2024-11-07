@@ -14,5 +14,5 @@ public:
   char* getDirector();
   int getDuration();
   int getRating();
-}
+};
 

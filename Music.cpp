@@ -17,7 +17,7 @@ Music::~Music() {
   delete[] publisher;
 }
 
-void Music::print() {
+virtual void Music::print() {
   cout << "Music:" << title << ", Year: " << year << ", Artist: " << artist << ", Publisher: " << publisher <<
     ", Duration: " << duration << " minutes" << endl;
 }

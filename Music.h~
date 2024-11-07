@@ -6,12 +6,12 @@ private:
   char* publisher;
   int duration;
 public:
-  Movie(char* title, int year, char* director, int duration, int rating);
-  virtual ~Movie();
+  Music(char* title, int year, char* artist, char* publisher, int duration);
+  virtual ~Music();
 
   virtual void print();
 
-  char* getDirector();
+  char* getArtist();
+  char* getPublisher();
   int getDuration();
-  int getRating();
 }

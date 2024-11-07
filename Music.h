@@ -14,4 +14,4 @@ public:
   char* getArtist();
   char* getPublisher();
   int getDuration();
-}
+};

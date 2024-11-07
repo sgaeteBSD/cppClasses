@@ -12,5 +12,5 @@ public:
 
   char* getPublisher();
   int getRating();
-}
+};
   
