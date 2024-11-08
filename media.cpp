@@ -12,7 +12,7 @@ Media::~Media() {
   delete[] title;
 }
 
-virtual void print() {
+void Media::print() {
   cout << "Unknown media type..." << endl;
 }
 

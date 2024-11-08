@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Music::Music(char* title, int year, char* artist, char* publisher, int duration) {
+Music::Music(char* title, int year, char* artist, char* publisher, int duration) : Media(title, year) {
   this->artist = new char[strlen(artist) + 1]; //convert to cstring of needed size
   strcpy(this->artist, artist); //copy the passed in director into our object's director
 
@@ -17,8 +17,8 @@ Music::~Music() {
   delete[] publisher;
 }
 
-virtual void Music::print() {
-  cout << "Music:" << title << ", Year: " << year << ", Artist: " << artist << ", Publisher: " << publisher <<
+void Music::print() {
+  cout << "Music: " << title << ", Year: " << year << ", Artist: " << artist << ", Publisher: " << publisher <<
     ", Duration: " << duration << " minutes" << endl;
 }
 

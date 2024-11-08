@@ -9,7 +9,7 @@ public:
   Movie(char* title, int year, char* director, int duration, int rating);
   virtual ~Movie();
 
-  virtual void print();
+  void print();
 
   char* getDirector();
   int getDuration();

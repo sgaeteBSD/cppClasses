@@ -9,7 +9,7 @@ public:
   Music(char* title, int year, char* artist, char* publisher, int duration);
   virtual ~Music();
 
-  virtual void print();
+  void print();
 
   char* getArtist();
   char* getPublisher();

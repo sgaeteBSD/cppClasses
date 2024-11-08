@@ -12,6 +12,10 @@ Media::~Media() {
   delete[] title;
 }
 
+virtual void print() {
+  cout << "Unknown media type..." << endl;
+}
+
 char* Media::getTitle() {
   return title;
 }

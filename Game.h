@@ -8,7 +8,7 @@ public:
   Game(char* title, int year, char* publisher, int rating);
   virtual ~Game();
 
-  virtual void print();
+  void print();
 
   char* getPublisher();
   int getRating();
