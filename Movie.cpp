@@ -15,7 +15,7 @@ Movie::~Movie() {
 
 void Movie::print() {
   cout << "Movie: " << title << ", Year: " << year << ", Director: " << director << ", Duration: " <<
-    duration << " minutes, Rating: " << rating << endl;
+    duration << " minutes, Rating: " << rating << "/10" << endl;
 }
 
 char* Movie::getDirector() {

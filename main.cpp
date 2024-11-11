@@ -9,7 +9,7 @@
 using namespace std;
 
 void add(vector<Media*> &med);
-//void search(vector<Media*> &med);
+void search(vector<Media*> &med);
 //void deleter(vector<Media*> &med);
 //void quit(vector<Media*> &med, bool &input);
 
@@ -39,7 +39,7 @@ int main() {
       input = true; //run command loop again
     }
     else if (strcmp(command, "SEARCH") == 0) {
-      //search(med);
+      search(med);
       input = true;
     }
     else if (strcmp(command, "DELETE") == 0) {
@@ -75,7 +75,7 @@ void add(vector<Media*> &med) {
     cin.ignore();
     cout << "Publisher?" << endl;
     cin.getline(tempPub, 80, '\n');
-    cout << "Rating?" << endl;
+    cout << "Rating? (out of 10)" << endl;
     cin >> tempRat;
     cin.ignore();
 
@@ -97,6 +97,7 @@ void add(vector<Media*> &med) {
     cout << "Duration (minutes)?" << endl;
     cin >> tempDur;
     cin.ignore();
+    cout << "Rating? (out of 10)" << endl;
     cin >> tempRat;
     cin.ignore();
 
@@ -130,6 +131,23 @@ void add(vector<Media*> &med) {
   }
 }
 
+void search(vector<Media*> &med) {
+  cout << "Would you like to search by TITLE or YEAR?" << endl;
+  char selector[5] = "";
+  cin >> selector;
+  cin.ignore();
+  if (strcmp(selector, "TITLE") == 0) {
+    char searcher[80];
+    cin.getline(searcher, 80, '\n');
+    for (auto it = med.begin(); it != med.end(); ++it) { //iterator to look through vect
+      if (strcmp((*it)->getTitle(), searcher)) {
+	(*it)->print();
+      }
+    }
+  }
+  
+  
+}
 
   /*char* temp = new char[80];
   char* temp2 = new char[80];

@@ -13,7 +13,8 @@ Game::~Game() {
 }
 
 void Game::print() {
-  cout << "Video Game: " << title << ", Year: " << year << ", Publisher: " << publisher << ", Rating: " << rating << endl;
+  cout << "Video Game: " << title << ", Year: " << year << ", Publisher: " << publisher << ", Rating: "
+       << rating << "/10" << endl;
 }
 
 char* Game::getPublisher() {
