@@ -24,20 +24,20 @@ int main() {
 
         if (strcmp(command, "ADD") == 0) {
             add(med);
-            input = true; //run command loop again
+            input = true; // run command loop again
         }
         else if (strcmp(command, "SEARCH") == 0) {
             search(med);
             input = true;
         }
         else if (strcmp(command, "DELETE") == 0) {
-            //deleter(med);
+            // deleter(med);
             input = true;
         }
         else if (strcmp(command, "QUIT") == 0) {
-            //quit(med, input);
+            // quit(med, input);
         }
-        else { //if command isn't 1 of the 4
+        else { // if command isn't one of the 4
             cout << "Invalid input! Try again." << endl;
         }
     }
@@ -200,4 +200,21 @@ void search(vector<Media*>& med) {
         bool matchFound = false;
         for (auto it = med.begin(); it != med.end(); ++it) {
             if (*it == nullptr) {
-                cout << "Null pointer detected in med vector
+                cout << "Null pointer detected in med vector!" << endl;
+                continue;
+            }
+
+            if ((*it)->getYear() == searchYear) {
+                (*it)->print();
+                matchFound = true;
+            }
+        }
+
+        if (!matchFound) {
+            cout << "No matching year found." << endl;
+        }
+    }
+    else {
+        cout << "Invalid search criteria." << endl;
+    }
+}
