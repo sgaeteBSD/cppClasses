@@ -2,7 +2,6 @@
 #include "Game.h"
 #include "Movie.h"
 #include "Music.h"
-
 #include <vector>
 #include <cstring>
 #include <iostream>
@@ -11,37 +10,29 @@ using namespace std;
 
 void add(vector<Media*>& med);
 void search(vector<Media*>& med);
-//void deleter(vector<Media*>& med);
-//void quit(vector<Media*>& med, bool& input);
 
 int main() {
     vector<Media*> med;
-
+    
     bool input = true;
     while (input == true) {
-
         cout << "Input a command." << endl;
         char command[6] = "";
-
         cin >> command;
         cin.ignore();
 
         if (strcmp(command, "ADD") == 0) {
             add(med);
-            input = true; // run command loop again
+            input = true; //run command loop again
         }
         else if (strcmp(command, "SEARCH") == 0) {
             search(med);
             input = true;
         }
-        else if (strcmp(command, "DELETE") == 0) {
-            //deleter(med);
-            input = true;
-        }
         else if (strcmp(command, "QUIT") == 0) {
-            //quit(med, input);
+            input = false; // Quit the loop
         }
-        else { // if command isn't one of the 4
+        else { //if command isn't 1 of the 4
             cout << "Invalid input! Try again." << endl;
         }
     }
@@ -73,9 +64,12 @@ void add(vector<Media*>& med) {
 
         Game* nGame = new Game(tempTitle, tempYear, tempPub, tempRat);
         if (nGame != nullptr) {
-            cout << nGame->getTitle() << endl;
+            cout << "Added Game: " << nGame->getTitle() << endl;
             med.push_back(nGame);
             nGame->print();
+        }
+        else {
+            cout << "Failed to create Game object!" << endl;
         }
     }
     else if (strcmp(medType, "MOVIE") == 0) {
@@ -98,6 +92,7 @@ void add(vector<Media*>& med) {
 
         Movie* nMovie = new Movie(tempTitle, tempYear, tempDirector, tempDur, tempRat);
         if (nMovie != nullptr) {
+            cout << "Added Movie: " << nMovie->getTitle() << endl;
             med.push_back(nMovie);
             nMovie->print();
         }
@@ -121,6 +116,7 @@ void add(vector<Media*>& med) {
 
         Music* nMusic = new Music(tempTitle, tempYear, tempArtist, tempPub, tempDur);
         if (nMusic != nullptr) {
+            cout << "Added Music: " << nMusic->getTitle() << endl;
             med.push_back(nMusic);
             nMusic->print();
         }
@@ -129,11 +125,11 @@ void add(vector<Media*>& med) {
         cout << "Invalid media type." << endl;
     }
 
-    // Ensure the vector has elements and print the first element
+    // Confirming that we added something to med
     if (!med.empty()) {
-        cout << "First element in med after adding: " << med[0]->getTitle() << endl;
+        cout << "Added media to vector. First item in med: " << med[0]->getTitle() << endl;
     } else {
-        cout << "No elements in med." << endl;
+        cout << "No media added." << endl;
     }
 }
 
@@ -153,12 +149,25 @@ void search(vector<Media*>& med) {
         char searcher[80];
         cin.getline(searcher, 80, '\n');
 
-        bool matchFound = false; // Keep track if we find any matches
+        bool matchFound = false; // Track if we find any matches
         for (auto it = med.begin(); it != med.end(); ++it) {
-            Game* gamePtr = dynamic_cast<Game*>(*it); // Safe casting
-            if (gamePtr && strcmp(gamePtr->getTitle(), searcher) == 0) {
-                gamePtr->print();
-                matchFound = true;
+            if (*it == nullptr) {
+                cout << "Null pointer detected in med vector!" << endl;
+                continue;
+            }
+
+            // Debugging output to see what we're working with
+            cout << "Inspecting media object: " << (*it)->getTitle() << endl;
+
+            Game* gamePtr = dynamic_cast<Game*>(*it);
+            if (gamePtr != nullptr) {
+                cout << "Found Game: " << gamePtr->getTitle() << endl;
+                if (strcmp(gamePtr->getTitle(), searcher) == 0) {
+                    gamePtr->print();
+                    matchFound = true;
+                }
+            } else {
+                cout << "Not a Game object, skipping." << endl;
             }
         }
 
@@ -172,8 +181,16 @@ void search(vector<Media*>& med) {
         cin >> searchYear;
         cin.ignore();
 
-        bool matchFound = false; // Keep track if we find any matches
+        bool matchFound = false; // Track if we find any matches
         for (auto it = med.begin(); it != med.end(); ++it) {
+            if (*it == nullptr) {
+                cout << "Null pointer detected in med vector!" << endl;
+                continue;
+            }
+
+            // Debugging output to see what we're working with
+            cout << "Inspecting media object with year: " << (*it)->getYear() << endl;
+
             if ((*it)->getYear() == searchYear) {
                 (*it)->print();
                 matchFound = true;
