@@ -10,14 +10,11 @@ Game::Game(char* title, int year, char* publisher, int rating) : Media(title, ye
 
 Game::~Game() {
   delete[] publisher;
-  publisher = nullptr;
 }
 
 void Game::print() {
-    cout << "Video Game: " << (title ? title : "Untitled")
-         << ", Year: " << year
-         << ", Publisher: " << (publisher ? publisher : "Unknown")
-         << ", Rating: " << rating << "/10" << endl;
+  cout << "Video Game: " << title << ", Year: " << year << ", Publisher: " << publisher << ", Rating: "
+       << rating << "/10" << endl;
 }
 
 char* Game::getPublisher() {

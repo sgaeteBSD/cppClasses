@@ -2,14 +2,18 @@
 
 using namespace std;
 
-Media::Media(char* title, int year) {
-  this->title = new char[strlen(title) + 1]; //convert to cstring of needed size
-  strcpy(this->title, title); //copy the passed in title into our object's title
-  this->year = year; //copy passed in year into object's year
+Media::Media(char* title, int year) : year(year) {
+    if (title) {
+        this->title = new char[strlen(title) + 1];
+        strcpy(this->title, title);
+    } else {
+        this->title = nullptr;
+    }
 }
 
 Media::~Media() {
   delete[] title;
+  title = nullptr;
 }
 
 void Media::print() {

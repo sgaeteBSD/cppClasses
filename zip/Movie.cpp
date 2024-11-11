@@ -11,7 +11,6 @@ Movie::Movie(char* title, int year, char* director, int duration, int rating) : 
 
 Movie::~Movie() {
   delete[] director;
-  director = nullptr;
 }
 
 void Movie::print() {

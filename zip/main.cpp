@@ -80,14 +80,8 @@ void add(vector<Media*> &med) {
     cin.ignore();
 
     Game* nGame = new Game(tempTitle, tempYear, tempPub, tempRat);
-    if (nGame != nullptr) {
-      cout << nGame->getTitle() << endl;
-      med.push_back(nGame);
-      nGame->print();
-    }
-    if (med[0] == nullptr) {
-      cout << "What" << endl;
-    }
+    med.push_back(nGame);
+    nGame->print();
   }
   else if (strcmp(medType, "MOVIE") == 0) {
     char tempDirector[80];
@@ -147,14 +141,10 @@ void search(vector<Media*> &med) {
     cout << "Enter title to search for:" << endl;
     char searcher[80];
     cin.getline(searcher, 80, '\n');
-    if (med[0] == nullptr) {
-      cout << "Null" << endl;
-    }
-    
+
     for (auto it = med.begin(); it != med.end(); ++it) {
-      Game* gamePtr = static_cast<Game*>(*it); // Directly cast, assuming it’s always Game
-      if (strcmp((gamePtr)->getTitle(), searcher) == 0) { // Check for exact match with == 0
-        (gamePtr)->print();
+      if (strcmp((*it)->getTitle(), searcher) == 0) { // Check for exact match with == 0
+        (*it)->print();
       }
     }
   } 

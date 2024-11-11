@@ -15,8 +15,6 @@ Music::Music(char* title, int year, char* artist, char* publisher, int duration)
 Music::~Music() {
   delete[] artist;
   delete[] publisher;
-  artist = nullptr;
-  publisher = nullptr;
 }
 
 void Music::print() {

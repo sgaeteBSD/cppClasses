@@ -10,7 +10,6 @@ Media::Media(char* title, int year) {
 
 Media::~Media() {
   delete[] title;
-  title = nullptr;
 }
 
 void Media::print() {
