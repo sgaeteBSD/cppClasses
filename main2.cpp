@@ -132,6 +132,15 @@ void add(vector<Media*>& med) {
     else {
         cout << "Invalid media type!" << endl;
     }
+
+    // Debugging after adding the item
+    cout << "After adding, vector size: " << med.size() << endl;
+    cout << "First item in med after add, address: " << med[0] << endl;
+    if (med[0] != nullptr) {
+        cout << "First item in med after add: " << med[0]->getTitle() << endl;
+    } else {
+        cout << "First item in med after add is nullptr!" << endl;
+    }
 }
 
 void search(vector<Media*>& med) {
@@ -140,9 +149,9 @@ void search(vector<Media*>& med) {
         return;
     }
 
+    // Debugging before search
     cout << "Before search, vector size: " << med.size() << endl;
     cout << "First item in med before search address: " << med[0] << endl;
-
     if (med[0] == nullptr) {
         cout << "First item in med is nullptr!" << endl;
         return;
@@ -150,7 +159,6 @@ void search(vector<Media*>& med) {
 
     cout << "First item in med before search: " << med[0]->getTitle() << endl;
 
-    // Continue with search logic...
     cout << "Would you like to search by TITLE or YEAR?" << endl;
     char selector[6];
     cin >> selector;
