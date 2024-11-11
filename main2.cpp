@@ -180,4 +180,11 @@ void search(vector<Media*>& med) {
             }
         }
 
-
+        if (!matchFound) {
+            cout << "No matching year found." << endl;
+        }
+    }
+    else {
+        cout << "Invalid search criteria." << endl;
+    }
+}
