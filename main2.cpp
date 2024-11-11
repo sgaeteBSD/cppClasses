@@ -10,8 +10,6 @@ using namespace std;
 
 void add(vector<Media*>& med);
 void search(vector<Media*>& med);
-//void deleter(vector<Media*>& med);
-//void quit(vector<Media*>& med, bool& input);
 
 int main() {
     vector<Media*> med;
@@ -144,14 +142,15 @@ void add(vector<Media*>& med) {
 }
 
 void search(vector<Media*>& med) {
+    // Debugging before search
+    cout << "Before search, vector size: " << med.size() << endl;
+    cout << "First item in med before search address: " << med[0] << endl;
+
     if (med.empty()) {
         cout << "No media available to search." << endl;
         return;
     }
 
-    // Debugging before search
-    cout << "Before search, vector size: " << med.size() << endl;
-    cout << "First item in med before search address: " << med[0] << endl;
     if (med[0] == nullptr) {
         cout << "First item in med is nullptr!" << endl;
         return;
@@ -201,23 +200,4 @@ void search(vector<Media*>& med) {
         bool matchFound = false;
         for (auto it = med.begin(); it != med.end(); ++it) {
             if (*it == nullptr) {
-                cout << "Null pointer detected in med vector!" << endl;
-                continue;
-            }
-
-            cout << "Inspecting media object at address: " << *it << endl;
-
-            if ((*it)->getYear() == searchYear) {
-                (*it)->print();
-                matchFound = true;
-            }
-        }
-
-        if (!matchFound) {
-            cout << "No matching year found." << endl;
-        }
-    }
-    else {
-        cout << "Invalid search criteria." << endl;
-    }
-}
+                cout << "Null pointer detected in med vector
